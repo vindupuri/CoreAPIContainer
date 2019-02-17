@@ -1,0 +1,15 @@
+FROM microsoft/dotnet:2.1-sdk
+ARG BUILD_CONFIGURATION=Debug
+ENV ASPNETCORE_ENVIRONMENT=Development
+ENV DOTNET_USE_POLLING_FILE_WATCHER=true
+EXPOSE 14559
+
+WORKDIR /src
+COPY ["WebApplication1/WebApplication1.csproj", "WebApplication1/"]
+
+RUN dotnet restore "WebApplication1/WebApplication1.csproj"
+COPY . .
+WORKDIR "/src/WebApplication1"
+RUN dotnet build --no-restore "WebApplication1.csproj" -c $BUILD_CONFIGURATION
+
+ENTRYPOINT ["dotnet", "run", "--no-build", "--no-launch-profile", "-c", "$BUILD_CONFIGURATION", "--"]

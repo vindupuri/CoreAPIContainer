@@ -30,6 +30,13 @@
       "commandName": "Docker",
       "launchBrowser": true,
       "launchUrl": "{Scheme}://localhost:{ServicePort}/api/values"
+    },
+    "Azure Dev Spaces": {
+      "commandName": "AzureDevSpaces",
+      "launchBrowser": true,
+      "resourceGroup": "aks-hanselman",
+      "aksName": "hanselkube",
+      "subscriptionId": "7cea22d2-c7cf-4071-903e-8d587c89776a"
     }
   }
 }
